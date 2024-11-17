@@ -50,9 +50,9 @@ def evaluate(board):
                 return -1
     if board[0][0] == board[1][1] == board[2][2]:
         if board[0][0] == 'X':
-            return 1
-        elif board[0][0] == 'O':
-            return -1
+                return 1
+            elif board[0][0] == 'O':
+                return -1
     if board[0][2] == board[1][1] == board[2][0]:
         if board[0][2] == 'X':
             return 1
@@ -122,8 +122,8 @@ def main():
             board[row][col] = player
             st.write(f"AI's turn: {row}, {col}")
         else:
-            row = st.number_input("Enter row (0, 1, or 2): ", min_value=0, max_value=2)
-            col = st.number_input("Enter column (0, 1, or 2): ", min_value=0, max_value=2)
+            row = st.number_input("Enter row (0, 1, or 2): ", min_value=0, max_value=2, key="row_input")
+            col = st.number_input("Enter column (0, 1, or 2): ", min_value=0, max_value=2, key="col_input")
             if board[row][col] == '-':
                 board[row][col] = player
             else:
