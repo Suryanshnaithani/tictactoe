@@ -18,7 +18,7 @@ def check_win(board, player):
     if board[0][0] == board[1][1] == board[2][2] == player:
         return True
     if board[0][2] == board[1][1] == board[2][0] == player:
-        return True
+            return True
     return False
 
 def check_draw(board):
@@ -27,6 +27,43 @@ def check_draw(board):
             if board[row][col] == '-':
                 return False
     return True
+
+def evaluate(board):
+    """Evaluates the current board state.
+    Returns:
+        1: Player X wins
+        -1: Player O wins
+        0: Draw
+    """
+    # Check rows, columns, and diagonals for a win
+    for row in range(3):
+        if board[row][0] == board[row][1] == board[row][2]:
+            if board[row][0] == 'X':
+                return 1
+            elif board[row][0] == 'O':
+                return -1
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col]:
+            if board[0][col] == 'X':
+                return 1
+            elif board[0][col] == 'O':
+                return -1
+    if board[0][0] == board[1][1] == board[2][2]:
+        if board[0][0] == 'X':
+            return 1
+        elif board[0][0] == 'O':
+            return -1
+    if board[0][2] == board[1][1] == board[2][0]:
+        if board[0][2] == 'X':
+            return 1
+        elif board[0][2] == 'O':
+            return -1
+    # Check for a draw
+    for row in range(3):
+        for col in range(3):
+            if board[row][col] == '-':
+                return 0
+    return 0
 
 def minimax(board, depth, is_max):
     score = evaluate(board)
