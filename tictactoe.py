@@ -41,18 +41,18 @@ def evaluate(board):
             if board[row][0] == 'X':
                 return 1
             elif board[row][0] == 'O':
-                return -1
-    for col in range(3):
-        if board[0][col] == board[1][col] == board[2][col]:
-            if board[0][col] == 'X':
-                return 1
-            elif board[0][col] == 'O':
-                return -1
+                return -1  # This line was indented incorrectly
+        for col in range(3):
+            if board[0][col] == board[1][col] == board[2][col]:
+                if board[0][col] == 'X':
+                    return 1
+                elif board[0][col] == 'O':
+                    return -1
     if board[0][0] == board[1][1] == board[2][2]:
         if board[0][0] == 'X':
                 return 1
-            elif board[0][0] == 'O':
-                return -1
+        elif board[0][0] == 'O':
+            return -1
     if board[0][2] == board[1][1] == board[2][0]:
         if board[0][2] == 'X':
             return 1
